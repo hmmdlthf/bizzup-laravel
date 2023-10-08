@@ -61,6 +61,10 @@ class CountryController extends AdminController
 
         $form->text('name', __('Name'));
 
+        $form->hasMany('states', function (Form\NestedForm $form) {
+            $form->text('name', __('State Name'));
+        });
+
         return $form;
     }
 }

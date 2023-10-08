@@ -9,6 +9,12 @@ class Social extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'value',
+        'social_type_id'
+    ];
+
     public function customer()
     {
         return $this->belongsTo(Customer::class);

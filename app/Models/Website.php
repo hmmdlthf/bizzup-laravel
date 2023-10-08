@@ -9,6 +9,10 @@ class Website extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'value'
+    ];
+
     public function customer()
     {
         return $this->belongsTo(Customer::class);

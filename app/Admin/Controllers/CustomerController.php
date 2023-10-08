@@ -2,7 +2,9 @@
 
 namespace App\Admin\Controllers;
 
+use App\Models\City;
 use App\Models\Customer;
+use App\Models\SocialType;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -79,7 +81,38 @@ class CustomerController extends AdminController
         $form->text('profile_pic', __('Profile pic'));
         $form->text('cover_pic', __('Cover pic'));
         $form->text('company_logo', __('Company logo'));
-        $form->number('city_id', __('City id'));
+        $form->select('city_id', __('City'))->options(City::all()->pluck('name', 'id'));
+        // $form->number('city_id', __('City id'));
+
+        $form->hasMany('emails', function (Form\NestedForm $form) {
+            $form->text('value', __('Email'));
+        });
+
+        $form->hasMany('phones', function (Form\NestedForm $form) {
+            $form->text('value', __('Phone Number'));
+        });
+
+        // $form->hasMany('whatsapp', function (Form\NestedForm $form) {
+        //     $form->text('value', __('Whatsapp Number'));
+        // });
+
+        $form->hasMany('websites', function (Form\NestedForm $form) {
+            $form->text('value', __('Website URL'));
+        });
+
+        $form->hasMany('products', function (Form\NestedForm $form) {
+            $form->text('title', __('Title'));
+            $form->textarea('des', __('Des'));
+            $form->text('image', __('Image'));
+            $form->decimal('price', __('Price'));
+            $form->decimal('discount-price', __('Discount price'));
+        });
+
+        $form->hasMany('socials', function (Form\NestedForm $form) {
+            $form->text('name', __('Name'));
+            $form->text('value', __('Value'));
+            $form->select('social_type_id', __('Social type id'))->options(SocialType::all()->pluck('name', 'id'));
+        });
 
         return $form;
     }
