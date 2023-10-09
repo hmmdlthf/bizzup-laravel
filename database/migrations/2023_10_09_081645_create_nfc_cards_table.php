@@ -19,7 +19,7 @@ class CreateNfcCardsTable extends Migration
             $table->string('uid')->unique();
             $table->string('url')->unique();
             $table->string('qrcode')->nullable();
-            $table->enum('status', ['active', 'inactive'])->default('active');
+            $table->enum('status', ['active', 'inactive'])->default('active')->nullable();
 
             $table->unsignedBigInteger('customer_id')->nullable();
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');

@@ -8,10 +8,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\URL;
 use Endroid\QrCode\Builder\Builder;
 use Endroid\QrCode\Encoding\Encoding;
-use Endroid\QrCode\ErrorCorrectionLevel;
-use Endroid\QrCode\Label\LabelAlignment;
 use Endroid\QrCode\Label\Font\NotoSans;
-use Endroid\QrCode\RoundBlockSizeMode;
 use Endroid\QrCode\Writer\PngWriter;
 
 
@@ -65,18 +62,15 @@ class NfcCardSeeder extends Seeder
             ->writerOptions([])
             ->data($url)
             ->encoding(new Encoding('UTF-8'))
-            ->errorCorrectionLevel(ErrorCorrectionLevel::High)
             ->size(300)
             ->margin(10)
-            ->roundBlockSizeMode(RoundBlockSizeMode::Margin)
             ->labelText($uid)
             ->labelFont(new NotoSans(20))
-            ->labelAlignment(LabelAlignment::Center)
             ->validateResult(false)
             ->build();
 
         $qrcodePath = 'qrcodes/' . $uid . '.png'; // Generate a path for the QR code image
-        $result->saveToFile(public_path($qrcodePath));
+        $result->saveToFile(storage_path( 'app/public/' . $qrcodePath));
         return $qrcodePath;
     }
 }

@@ -15,12 +15,19 @@ class CreateCustomersTable extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('company_name');
-            $table->string('position');
-            $table->string('profile_pic');
-            $table->string('cover_pic');
-            $table->string('company_logo');
+            $table->string('name')->nullable();
+            $table->enum('gender', ['male', 'female'])->default('male');
+            $table->string('company_name')->nullable();
+            $table->string('position')->nullable();
+            $table->string('profile_pic')->nullable()->default('images/default-profile-pic.webp');
+            $table->boolean('is_profile_pic')->default(true);
+            $table->string('cover_pic')->nullable()->default('images/default-cover-pic.jpg');
+            $table->string('company_logo')->nullable()->default('images/default-company-logo.webp');
+            $table->boolean('is_company_logo')->default(true);
+            $table->enum('profile_type', ['personal', 'company'])->default('personal');
+            $table->string('address')->nullable();
+            $table->text('about')->nullable();
+            $table->enum('status', ['active', 'inactive'])->default('active');
 
             $table->unsignedBigInteger('city_id');
             $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');

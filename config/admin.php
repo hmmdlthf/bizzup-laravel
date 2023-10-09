@@ -153,7 +153,7 @@ return [
     'upload' => [
 
         // Disk in `config/filesystem.php`.
-        'disk' => 'admin',
+        'disk' => 'public',
 
         // Image and file upload path under the disk above.
         'directory' => [
@@ -223,7 +223,7 @@ return [
          * or specific method to path like: get:admin/auth/logs.
          */
         'except' => [
-            env('ADMIN_ROUTE_PREFIX', 'admin').'/auth/logs*',
+            env('ADMIN_ROUTE_PREFIX', 'admin') . '/auth/logs*',
         ],
     ],
 
@@ -348,9 +348,7 @@ return [
     'minify_assets' => [
 
         // Assets will not be minified.
-        'excepts' => [
-
-        ],
+        'excepts' => [],
 
     ],
 
@@ -405,6 +403,26 @@ return [
     |
     */
     'extensions' => [
+        'simplemde' => [
 
+            // Set to false if you want to disable this extension
+            'enable' => true,
+
+            // If you want to set an alias for the calling method
+            // 'alias' => 'markdown',
+
+            // Editor configuration
+            'config' => [
+                'placeholder' => 'xxxx',
+            ]
+        ],
+        'ckeditor' => [
+
+            //Set to false if you want to disable this extension
+            'enable' => true,
+
+            // Editor configuration
+            'config' => []
+        ]
     ],
 ];

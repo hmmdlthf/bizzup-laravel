@@ -55,11 +55,18 @@ class NfcCardController extends AdminController
         $show->field('prefix', __('Prefix'));
         $show->field('uid', __('Uid'));
         $show->field('url', __('Url'));
-        $show->field('qrcode', __('Qrcode'));
+        $show->field('qrcode', __('Qrcode'))->unescape()->as(function ($pic) {
+            $pic = asset('storage/' . $pic);
+            $pic_file = basename($pic);
+            return "<div style='position: relative;'><img src='{$pic}' style='width: 200px; height: auto;' /><a href='{$pic}' download='{$pic_file}' target='_blank' class='btn btn-sm btn-primary' style='position: absolute; bottom: 1rem; right: 1rem;'>Download Image</a></div>";
+        });
         $show->field('status', __('Status'));
-        $show->field('customer_id', __('Customer Id'));
-        $show->field('customer.name', __('Customer Name'));
-        $show->field('customer.company_name', __('Company Name'));
+
+        $show->customer(function ($customer) {
+            $customer->field('id', __('Customer Id'));
+            $customer->field('name', __('Customer'));
+            $customer->field('company_name', __('Company'));
+        });
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
 
@@ -79,7 +86,7 @@ class NfcCardController extends AdminController
         $form->text('uid', __('Uid'));
         $form->url('url', __('Url'));
         $form->image('qrcode', __('Qrcode'));
-        $form->text('status', __('Status'))->default('active');
+        $form->select('status', __('Status'))->options(['active' => 'Active', 'inactive' => 'Inactivate'])->default('active');
         $form->select('customer_id', __('Customer'))->options(Customer::all()->pluck('name', 'id'));
 
         return $form;

@@ -7,9 +7,11 @@
     "require": {
         "php": "^7.3|^8.0",
         "encore/laravel-admin": "^1.8",
-        "endroid/qr-code": "^5.0",
+        "endroid/qr-code": "^4.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "laravel-admin-ext/ckeditor": "^1.0",
+        "laravel-admin-ext/simplemde": "^1.0",
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
