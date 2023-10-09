@@ -17,7 +17,6 @@ class CreateSocialsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('social_type_id');
-            $table->string('name');
             $table->string('value');
             $table->timestamps();
 

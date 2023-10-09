@@ -10,7 +10,6 @@ class Social extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
         'value',
         'social_type_id'
     ];

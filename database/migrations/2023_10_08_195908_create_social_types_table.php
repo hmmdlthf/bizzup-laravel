@@ -17,6 +17,9 @@ class CreateSocialTypesTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('icon');
+            $table->string('default-link');
+            $table->string('prefix')->nullable();
+            $table->string('suffix')->nullable();
             $table->timestamps();
         });
     }

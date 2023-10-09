@@ -1,0 +1,79 @@
+[
+    {
+        "name": "instagram",
+        "icon": "/images/social-icons/instagram.png",
+        "link": "https://instagram.com",
+        "prefix": "",
+        "suffix": ""
+    },
+    {
+        "name": "facebook",
+        "icon": "/images/social-icons/facebook.png",
+        "link": "https://facebook.com/",
+        "prefix": "",
+        "suffix": ""
+    },
+    {
+        "name": "phone",
+        "icon": "/images/social-icons/phone.png",
+        "link": "+971502277340",
+        "prefix": "tel:",
+        "suffix": ""
+    },
+    {
+        "name": "whatsapp",
+        "icon": "/images/social-icons/whatsapp.png",
+        "link": "https://wa.me/+971502277340?text=Hi",
+        "prefix": "https://wa.me/",
+        "suffix": ""
+    },
+    {
+        "name": "linkedin",
+        "icon": "/images/social-icons/linkedin.png",
+        "link": "https://www.linkedin.com/",
+        "prefix": "",
+        "suffix": ""
+    },
+    {
+        "name": "mail",
+        "icon": "/images/social-icons/email.png",
+        "link": "naseemkc@gmail.com",
+        "prefix": "mailto:",
+        "suffix": ""
+    },
+    {
+        "name": "youtubbe",
+        "icon": "/images/social-icons/youtube.png",
+        "link": "https://youtube.com",
+        "prefix": "",
+        "suffix": ""
+    },
+    {
+        "name": "website",
+        "icon": "/images/social-icons/website.png",
+        "link": "https://bizzup.in",
+        "prefix": "",
+        "suffix": ""
+    },
+    {
+        "name": "google-pay",
+        "icon": "/images/social-icons/google-pay.png",
+        "link": "https://pay.google.com",
+        "prefix": "",
+        "suffix": ""
+    },
+    {
+        "name": "phonepe",
+        "icon": "/images/social-icons/phonepe.png",
+        "link": "https://phonepe.com",
+        "prefix": "",
+        "suffix": ""
+    },
+    {
+        "name": "location",
+        "icon": "/images/social-icons/location.png",
+        "link": "https://phonepe.com",
+        "prefix": "",
+        "suffix": ""
+    }
+]

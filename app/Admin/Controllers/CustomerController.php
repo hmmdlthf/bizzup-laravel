@@ -78,9 +78,9 @@ class CustomerController extends AdminController
         $form->text('name', __('Name'));
         $form->text('company_name', __('Company name'));
         $form->text('position', __('Position'));
-        $form->text('profile_pic', __('Profile pic'));
-        $form->text('cover_pic', __('Cover pic'));
-        $form->text('company_logo', __('Company logo'));
+        $form->image('profile_pic', __('Profile pic'));
+        $form->image('cover_pic', __('Cover pic'));
+        $form->image('company_logo', __('Company logo'));
         $form->select('city_id', __('City'))->options(City::all()->pluck('name', 'id'));
         // $form->number('city_id', __('City id'));
 
@@ -92,9 +92,9 @@ class CustomerController extends AdminController
             $form->text('value', __('Phone Number'));
         });
 
-        // $form->hasMany('whatsapp', function (Form\NestedForm $form) {
-        //     $form->text('value', __('Whatsapp Number'));
-        // });
+        $form->hasMany('whatsapps', function (Form\NestedForm $form) {
+            $form->text('value', __('Whatsapp Number'));
+        });
 
         $form->hasMany('websites', function (Form\NestedForm $form) {
             $form->text('value', __('Website URL'));
@@ -103,7 +103,7 @@ class CustomerController extends AdminController
         $form->hasMany('products', function (Form\NestedForm $form) {
             $form->text('title', __('Title'));
             $form->textarea('des', __('Des'));
-            $form->text('image', __('Image'));
+            $form->image('image', __('Image'));
             $form->decimal('price', __('Price'));
             $form->decimal('discount-price', __('Discount price'));
         });
@@ -112,6 +112,10 @@ class CustomerController extends AdminController
             $form->text('name', __('Name'));
             $form->text('value', __('Value'));
             $form->select('social_type_id', __('Social type id'))->options(SocialType::all()->pluck('name', 'id'));
+        });
+
+        $form->hasMany('other_images', function (Form\NestedForm $form) {
+            $form->image('image', __('image'));
         });
 
         return $form;
