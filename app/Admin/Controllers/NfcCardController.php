@@ -30,7 +30,9 @@ class NfcCardController extends AdminController
         $grid->column('id', __('Id'));
         $grid->column('prefix', __('Prefix'));
         $grid->column('uid', __('Uid'));
-        $grid->column('url', __('Url'));
+        $grid->column('url', __('Url'))->display(function ($url) {
+            return "<a href='{$url}'target='_blank' >{$url}</a>";
+        });
         $grid->column('qrcode', __('Qrcode'));
         $grid->column('status', __('Status'));
         $grid->column('customer_id', __('Customer Id'));
