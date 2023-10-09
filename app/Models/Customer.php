@@ -48,4 +48,9 @@ class Customer extends Model
     {
         return $this->hasMany(OtherImage::class);
     }
+
+    public function nfc_card()
+    {
+        return $this->hasOne(NfcCard::class);
+    }
 }

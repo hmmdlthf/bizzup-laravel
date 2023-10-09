@@ -70,7 +70,7 @@ class NfcCardSeeder extends Seeder
             ->margin(10)
             ->roundBlockSizeMode(RoundBlockSizeMode::Margin)
             ->labelText($uid)
-            ->labelFont(new NotoSans(50))
+            ->labelFont(new NotoSans(20))
             ->labelAlignment(LabelAlignment::Center)
             ->validateResult(false)
             ->build();

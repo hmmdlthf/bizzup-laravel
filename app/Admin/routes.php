@@ -25,5 +25,6 @@ Route::group([
     $router->resource('socials', SocialController::class);
     $router->resource('other-images', OtherImageController::class);
     $router->resource('products', ProductController::class);
+    $router->resource('nfc-cards', NfcCardController::class);
 
 });
