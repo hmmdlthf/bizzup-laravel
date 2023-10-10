@@ -72,7 +72,7 @@
     {
         "name": "location",
         "icon": "/images/social-icons/location.png",
-        "link": "https://phonepe.com",
+        "link": "https://maps.google.com",
         "prefix": "",
         "suffix": ""
     }
