@@ -1,0 +1,53 @@
+/* Style headings */
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 16px;
+}
+
+h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 14px;
+}
+
+/* Style paragraphs */
+p {
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/* Style emphasis (italics and bold) */
+em {
+    font-style: italic;
+}
+
+strong {
+    font-weight: bold;
+}
+
+/* Style lists */
+ul, ol {
+    margin-bottom: 10px;
+    padding-left: 20px;
+}
+
+li {
+    margin: 4px 0;
+}
+
+/* Style links */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
