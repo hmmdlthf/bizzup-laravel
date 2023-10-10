@@ -21,7 +21,7 @@ class NfcCardSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 1; $i <= 10; $i++) { // You can generate as many NFC cards as needed
+        for ($i = 1; $i <= 500; $i++) { // You can generate as many NFC cards as needed
             $prefix = $this->generateAlphaPrefix();
             $uid = $this->generateUid($prefix);
             $url = env('APP_URL_ROOT') . 'open-profile.php?card-id=' . $uid;
