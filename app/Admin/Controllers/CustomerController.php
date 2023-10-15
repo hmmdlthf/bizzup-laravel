@@ -10,6 +10,7 @@ use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
+use Illuminate\Support\Facades\Hash;
 
 class CustomerController extends AdminController
 {
@@ -198,6 +199,7 @@ class CustomerController extends AdminController
         $form->text('name', __('Name'));
         $form->text('company_name', __('Company name'));
         $form->text('username', __('Username'));
+        $form->password('password', __('Password'))->default('password');
         $form->text('position', __('Position'));
         $form->select('profile_type', __('Profile Type'))->options(['personal' => 'Personal Type', 'company' => 'Company Type'])->default('personal');
         $form->image('profile_pic', __('Profile pic'));
@@ -241,6 +243,10 @@ class CustomerController extends AdminController
 
         $form->hasMany('other_images', function (Form\NestedForm $form) {
             $form->image('image', __('image'));
+        });
+
+        $form->saving(function (Form $form) {
+            $form->password = Hash::make($form->password);
         });
         
         return $form;
