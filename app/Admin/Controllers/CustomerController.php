@@ -31,6 +31,7 @@ class CustomerController extends AdminController
 
         $grid->column('id', __('Id'));
         $grid->column('name', __('Name'));
+        $grid->column('username', __('Username'));
         $grid->column('company_name', __('Company name'));
         $grid->column('profile_type', __('Profile Type'));
         $grid->column('position', __('Position'));
@@ -60,6 +61,7 @@ class CustomerController extends AdminController
 
         $show->field('id', __('Id'));
         $show->field('name', __('Name'));
+        $show->field('username', __('Username'));
         $show->field('company_name', __('Company name'));
         $show->field('profile_type', __('Profile Type'));
         $show->field('position', __('Position'));
@@ -195,6 +197,7 @@ class CustomerController extends AdminController
 
         $form->text('name', __('Name'));
         $form->text('company_name', __('Company name'));
+        $form->text('username', __('Username'));
         $form->text('position', __('Position'));
         $form->select('profile_type', __('Profile Type'))->options(['personal' => 'Personal Type', 'company' => 'Company Type'])->default('personal');
         $form->image('profile_pic', __('Profile pic'));
