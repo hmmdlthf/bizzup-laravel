@@ -26,5 +26,5 @@ Route::group([
     $router->resource('other-images', OtherImageController::class);
     $router->resource('products', ProductController::class);
     $router->resource('nfc-cards', NfcCardController::class);
-
+    $router->resource('payment-method-types', PaymentMethodTypeController::class);
 });

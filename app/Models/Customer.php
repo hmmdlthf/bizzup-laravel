@@ -87,4 +87,9 @@ class Customer extends Authenticatable
     {
         return $this->hasOne(NfcCard::class);
     }
+
+    public function payment_methods()
+    {
+        return $this->hasMany(PaymentMethod::class);
+    }
 }

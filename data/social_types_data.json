@@ -56,20 +56,6 @@
         "suffix": ""
     },
     {
-        "name": "google-pay",
-        "icon": "/images/social-icons/google-pay.png",
-        "link": "https://pay.google.com",
-        "prefix": "",
-        "suffix": ""
-    },
-    {
-        "name": "phonepe",
-        "icon": "/images/social-icons/phonepe.png",
-        "link": "https://phonepe.com",
-        "prefix": "",
-        "suffix": ""
-    },
-    {
         "name": "location",
         "icon": "/images/social-icons/location.png",
         "link": "https://maps.google.com",

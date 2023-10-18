@@ -5,12 +5,16 @@ namespace App\Admin\Controllers;
 use App\Models\City;
 use App\Models\Customer;
 use App\Models\NfcCard;
+use App\Models\PaymentMethodType;
 use App\Models\SocialType;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
 use Illuminate\Support\Facades\Hash;
+Use Encore\Admin\Admin;
+
+
 
 class CustomerController extends AdminController
 {
@@ -45,8 +49,6 @@ class CustomerController extends AdminController
         $grid->column('profile_type', __('Profile Type'));
         $grid->column('position', __('Position'));
         $grid->column('city.name', __('City'));
-        $grid->column('city.state.name', __('State'));
-        $grid->column('city.state.country.name', __('Country'));
 
         $grid->filter(function ($filter) {
             return $filter->like('name');
@@ -197,6 +199,8 @@ class CustomerController extends AdminController
      */
     protected function form()
     {
+        Admin::script('console.log("hello world");');
+        
         $form = new Form(new Customer());
 
         $form->display('id', __('ID'));
@@ -243,11 +247,20 @@ class CustomerController extends AdminController
 
         $form->hasMany('socials', function (Form\NestedForm $form) {
             $form->text('value', __('Value'));
-            $form->select('social_type_id', __('Social type id'))->options(SocialType::all()->pluck('name', 'id'));
+            $form->select('social_type_id', __('Social type'))->options(SocialType::all()->pluck('name', 'id'));
+            $form->image('image', __('Image'));
         });
 
         $form->hasMany('other_images', function (Form\NestedForm $form) {
             $form->image('image', __('image'));
+        });
+
+        $form->hasMany('payment_methods', function (Form\NestedForm $form) {
+            $form->image('qrcode_image', __('image'));
+            $form->url('url', __('URL'));
+            $form->mobile('pay_number', __('Pay Number'));
+            $form->text('account_holder_name', __('Account Holder Name'));
+            $form->select('payment_method_type_id', __('Payment Method Type'))->options(PaymentMethodType::all()->pluck('name', 'id'));
         });
 
         $form->saving(function (Form $form) {

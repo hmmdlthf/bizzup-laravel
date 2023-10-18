@@ -21,5 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CitySeeder::class);
         $this->call(SocialTypeSeeder::class);
         $this->call(NfcCardSeeder::class);
+        $this->call(LinkTypeSeeder::class);
+        $this->call(PaymentMethodTypeSeeder::class);
     }
 }
