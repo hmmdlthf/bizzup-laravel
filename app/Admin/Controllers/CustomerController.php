@@ -32,8 +32,12 @@ class CustomerController extends AdminController
 
         $grid->column('id', __('Id'));
         $grid->column('name', __('Name'));
-        $grid->column('url', __('URL'))->unescape()->display(function () {
+        $grid->column('name-url', __('URL - With Name'))->unescape()->display(function () {
             $url = env('APP_URL_ROOT') . str_replace(' ', '-', $this->name);
+            return "<a href='{$url}' target='_blank' >{$url}</a>"; 
+        });
+        $grid->column('company-url', __('URL - With Company'))->unescape()->display(function () {
+            $url = env('APP_URL_ROOT') . str_replace(' ', '-', $this->company_name);
             return "<a href='{$url}' target='_blank' >{$url}</a>"; 
         });
         $grid->column('username', __('Username'));
