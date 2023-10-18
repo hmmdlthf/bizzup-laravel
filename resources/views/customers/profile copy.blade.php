@@ -22,38 +22,32 @@
                 <img src="{{ asset('storage/' . $customer->cover_pic) }}" alt="">
             </div>
             <div class="profile-pic">
-                <img src="{{ $customer->is_profile_pic ? asset('storage/' . $customer->profile_pic) : $customer->company_logo }}" alt="">
+                <img src="{{ $customer->profile_type == 'personal' ? asset('storage/' . $customer->profile_pic) : asset('storage/' . $customer->company_logo)  }}" alt="">
 
-                <?php if ($profile_pic) { ?>
+                <?php if ($customer->profile_pic) { ?>
                     <div class="company-logo">
-                        <img src="<?php echo $company_logo; ?>" alt="">
+                        <img src="{{ asset('storage/' . $customer->company_logo) }}" alt="">
                     </div>
                 <?php } ?>
             </div>
         </div>
         <div class="profile-top">
             <div class="column">
-                <div class="name">
-                    <?php if (!empty($name)) {
-                        echo $name;
-                    } else {
-                        echo $company_name;
-                    } ?>
-                </div>
-                <?php if ($position) { ?>
+                <div class="name">{{ $customer->profile_type == 'personal' ? $customer->name : $customer->company_name }}</div>
+                @if($customer->position)
                     <div class="position">
-                        <?php echo $position; ?> @ <span class="company"><?php echo $company_name; ?></span>
+                        {{ $customer->position }} @ <span class="company">{{ $customer->company_name }}</span>
                     </div>
-                <?php } ?>
+                @endif
                 <div class="location">
                     <div class="city">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
                             <path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z" fill="currentColor" />
                         </svg>
-                        <span><?php echo $city; ?>,</span>
+                        <span>{{ $customer->city->name }}</span>
                     </div>
-                    <div class="state"><?php echo $state; ?>,</div>
-                    <div class="country"><?php echo $country; ?></div>
+                    <div class="state">{{ $customer->city->state->name }}</div>
+                    <div class="country">{{ $customer->city->state->country->name }}</div>
 
                 </div>
             </div>
@@ -63,13 +57,13 @@
         </div>
         <div class="profile-info">
             <div class="square-btns">
-                <?php foreach ($social_btns as $btn) { ?>
-                    <div class="btn btn-square <?php echo $btn['name']; ?>-btn" id="<?php echo $btn['name']; ?>-btn">
-                        <a href="<?php echo $btn['link']; ?>" target="_blank" rel="noopener noreferrer">
-                            <img src="<?php echo $btn['icon']; ?>" alt="">
+                @foreach ($social_btns as $btn)
+                    <div class="btn btn-square {{ $btn['name'] }}-btn" id="{{ $btn['name'] }}-btn">
+                        <a href="{{ $btn['link'] }}" target="_blank" rel="noopener noreferrer">
+                            <img src="{{ $btn['icon'] }}" alt="">
                         </a>
                     </div>
-                <?php } ?>
+                @endforeach
             </div>
             <div class="icon-text-btns">
                 <div class="btn-icon-text">
