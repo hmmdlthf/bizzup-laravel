@@ -204,9 +204,8 @@ class CustomerController extends AdminController
         $form = new Form(new Customer());
 
         $form->display('id', __('ID'));
-
-        $form->text('name', __('Name'));
-        $form->text('company_name', __('Company name'));
+        $form->text('name', __('Name'))->rules('regex:/^[\sA-Za-z0-9_]+$/');
+        $form->text('company_name', __('Company name'))->rules('regex:/^[\sA-Za-z0-9_]+$/');
         $form->text('username', __('Username'));
         $form->password('password', __('Password'))->default('password');
         $form->text('position', __('Position'));
