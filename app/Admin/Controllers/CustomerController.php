@@ -51,7 +51,7 @@ class CustomerController extends AdminController
         $grid->column('city.name', __('City'));
 
         $grid->filter(function ($filter) {
-            return $filter->like('name');
+            return $filter->like('name,company_name');
         });
 
         return $grid;
@@ -204,8 +204,8 @@ class CustomerController extends AdminController
         $form = new Form(new Customer());
 
         $form->display('id', __('ID'));
-        $form->text('name', __('Name'))->rules('regex:/^[\sA-Za-z0-9_]+$/');
-        $form->text('company_name', __('Company name'))->rules('regex:/^[\sA-Za-z0-9_]+$/');
+        $form->text('name', __('Name'))->rules('regex:/^[\sA-Za-z0-9._]+$/');
+        $form->text('company_name', __('Company name'))->rules('regex:/^[\sA-Za-z0-9._]+$/');
         $form->text('username', __('Username'));
         $form->password('password', __('Password'))->default('password');
         $form->text('position', __('Position'));
