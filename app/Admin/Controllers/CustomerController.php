@@ -263,6 +263,11 @@ class CustomerController extends AdminController
             $form->select('payment_method_type_id', __('Payment Method Type'))->options(PaymentMethodType::all()->pluck('name', 'id'));
         });
 
+        $form->hasMany('other_files', function (Form\NestedForm $form) {
+            $form->text('name', __('Name'));
+            $form->file('file', __('File'))->rules('mimes:doc,docx,xlsx,pdf')->downloadable();
+        });
+
         $form->saving(function (Form $form) {
             $form->password = Hash::make($form->password);
         });
