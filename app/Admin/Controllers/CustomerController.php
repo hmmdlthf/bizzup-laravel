@@ -51,7 +51,8 @@ class CustomerController extends AdminController
         $grid->column('city.name', __('City'));
 
         $grid->filter(function ($filter) {
-            return $filter->like('name,company_name');
+            $filter->like('name', 'Name');
+            $filter->like('company_name', 'Company Name');
         });
 
         return $grid;
